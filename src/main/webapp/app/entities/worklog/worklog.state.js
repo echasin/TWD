@@ -9,145 +9,124 @@
 
     function stateConfig($stateProvider) {
         $stateProvider
-        .state('organization', {
+        .state('worklog', {
             parent: 'entity',
-            url: '/organization?page&sort&search',
+            url: '/worklog',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'jetsApp.organization.home.title'
+                pageTitle: 'jetsApp.worklog.home.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/organization/organizations.html',
-                    controller: 'OrganizationController',
+                    templateUrl: 'app/entities/worklog/worklogs.html',
+                    controller: 'WorklogController',
                     controllerAs: 'vm'
                 }
             },
-            params: {
-                page: {
-                    value: '1',
-                    squash: true
-                },
-                sort: {
-                    value: 'id,asc',
-                    squash: true
-                },
-                search: null
-            },
             resolve: {
-                pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
-                    return {
-                        page: PaginationUtil.parsePage($stateParams.page),
-                        sort: $stateParams.sort,
-                        predicate: PaginationUtil.parsePredicate($stateParams.sort),
-                        ascending: PaginationUtil.parseAscending($stateParams.sort),
-                        search: $stateParams.search
-                    };
-                }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('organization');
+                    $translatePartialLoader.addPart('worklog');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
             }
         })
-        .state('organization-detail', {
+        .state('worklog-detail', {
             parent: 'entity',
-            url: '/organization/{id}',
+            url: '/worklog/{id}',
             data: {
                 authorities: ['ROLE_USER'],
-                pageTitle: 'jetsApp.organization.detail.title'
+                pageTitle: 'jetsApp.worklog.detail.title'
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/organization/organization-detail.html',
-                    controller: 'OrganizationDetailController',
+                    templateUrl: 'app/entities/worklog/worklog-detail.html',
+                    controller: 'WorklogDetailController',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('organization');
+                    $translatePartialLoader.addPart('worklog');
                     return $translate.refresh();
                 }],
-                entity: ['$stateParams', 'Organization', function($stateParams, Organization) {
-                    return Organization.get({id : $stateParams.id});
+                entity: ['$stateParams', 'Worklog', function($stateParams, Worklog) {
+                    return Worklog.get({id : $stateParams.id});
                 }]
             }
         })
-        .state('organization.new', {
-            parent: 'organization',
+        .state('worklog.new', {
+            parent: 'worklog',
             url: '/new',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/organization/organization-dialog.html',
-                    controller: 'OrganizationDialogController',
+                    templateUrl: 'app/entities/worklog/worklog-dialog.html',
+                    controller: 'WorklogDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
                         entity: function () {
                             return {
-                                name: null,
-                                identifierJson: null,
+                                hours: null,
                                 id: null
                             };
                         }
                     }
                 }).result.then(function() {
-                    $state.go('organization', null, { reload: true });
+                    $state.go('worklog', null, { reload: true });
                 }, function() {
-                    $state.go('organization');
+                    $state.go('worklog');
                 });
             }]
         })
-        .state('organization.edit', {
-            parent: 'organization',
+        .state('worklog.edit', {
+            parent: 'worklog',
             url: '/{id}/edit',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/organization/organization-dialog.html',
-                    controller: 'OrganizationDialogController',
+                    templateUrl: 'app/entities/worklog/worklog-dialog.html',
+                    controller: 'WorklogDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
                     size: 'lg',
                     resolve: {
-                        entity: ['Organization', function(Organization) {
-                            return Organization.get({id : $stateParams.id});
+                        entity: ['Worklog', function(Worklog) {
+                            return Worklog.get({id : $stateParams.id});
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('organization', null, { reload: true });
+                    $state.go('worklog', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 });
             }]
         })
-        .state('organization.delete', {
-            parent: 'organization',
+        .state('worklog.delete', {
+            parent: 'worklog',
             url: '/{id}/delete',
             data: {
                 authorities: ['ROLE_USER']
             },
             onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                 $uibModal.open({
-                    templateUrl: 'app/entities/organization/organization-delete-dialog.html',
-                    controller: 'OrganizationDeleteController',
+                    templateUrl: 'app/entities/worklog/worklog-delete-dialog.html',
+                    controller: 'WorklogDeleteController',
                     controllerAs: 'vm',
                     size: 'md',
                     resolve: {
-                        entity: ['Organization', function(Organization) {
-                            return Organization.get({id : $stateParams.id});
+                        entity: ['Worklog', function(Worklog) {
+                            return Worklog.get({id : $stateParams.id});
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('organization', null, { reload: true });
+                    $state.go('worklog', null, { reload: true });
                 }, function() {
                     $state.go('^');
                 });

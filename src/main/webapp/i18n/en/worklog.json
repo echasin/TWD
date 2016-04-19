@@ -1,0 +1,22 @@
+{
+    "jetsApp": {
+        "worklog" : {
+            "home": {
+                "title": "Worklogs",
+                "createLabel": "Create a new Worklog",
+                "createOrEditLabel": "Create or edit a Worklog",
+                "search": "Search for Worklog"
+            },
+            "created": "A new Worklog is created with identifier {{ param }}",
+            "updated": "A Worklog is updated with identifier {{ param }}",
+            "deleted": "A Worklog is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Worklog {{ id }}?"
+            },
+            "detail": {
+                "title": "Worklog"
+            },
+            "hours": "Hours"
+        }
+    }
+}

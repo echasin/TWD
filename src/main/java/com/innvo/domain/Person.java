@@ -25,8 +25,8 @@ public class Person implements Serializable {
     private Long id;
 
     @Size(max = 50)
-    @Column(name = "lastname", length = 50)
-    private String lastname;
+    @Column(name = "name_last", length = 50)
+    private String nameLast;
 
     @Column(name = "identifier_json")
     private String identifierJson;
@@ -39,12 +39,12 @@ public class Person implements Serializable {
         this.id = id;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getNameLast() {
+        return nameLast;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setNameLast(String nameLast) {
+        this.nameLast = nameLast;
     }
 
     public String getIdentifierJson() {
@@ -79,7 +79,7 @@ public class Person implements Serializable {
     public String toString() {
         return "Person{" +
             "id=" + id +
-            ", lastname='" + lastname + "'" +
+            ", nameLast='" + nameLast + "'" +
             ", identifierJson='" + identifierJson + "'" +
             '}';
     }

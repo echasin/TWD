@@ -17,7 +17,7 @@
                 "title": "Organization"
             },
             "name": "Name",
-            "indentifierJson": "IndentifierJson"
+            "identifierJson": "IdentifierJson"
         }
     }
 }

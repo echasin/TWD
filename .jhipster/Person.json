@@ -1,7 +1,8 @@
 {
+    "relationships": [],
     "fields": [
         {
-            "fieldName": "lastname",
+            "fieldName": "nameLast",
             "fieldType": "String",
             "fieldValidateRules": [
                 "maxlength"
@@ -13,7 +14,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20160419003810",
+    "changelogDate": "20160419193352",
     "dto": "no",
     "service": "no",
     "entityTableName": "person",

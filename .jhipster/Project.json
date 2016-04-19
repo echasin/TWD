@@ -1,5 +1,6 @@
 {
-     "fields": [
+    "relationships": [],
+    "fields": [
         {
             "fieldName": "name",
             "fieldType": "String",
@@ -10,11 +11,11 @@
             "fieldValidateRulesMaxlength": "50"
         },
         {
-            "fieldName": "identifier_json",
+            "fieldName": "indentifierJson",
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20160417014045",
+    "changelogDate": "20160419193608",
     "dto": "no",
     "service": "no",
     "entityTableName": "project",

@@ -44,8 +44,8 @@ public class OrganizationResourceIntTest {
 
     private static final String DEFAULT_NAME = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
-    private static final String DEFAULT_INDENTIFIER_JSON = "AAAAA";
-    private static final String UPDATED_INDENTIFIER_JSON = "BBBBB";
+    private static final String DEFAULT_IDENTIFIER_JSON = "AAAAA";
+    private static final String UPDATED_IDENTIFIER_JSON = "BBBBB";
 
     @Inject
     private OrganizationRepository organizationRepository;
@@ -79,7 +79,7 @@ public class OrganizationResourceIntTest {
         organizationSearchRepository.deleteAll();
         organization = new Organization();
         organization.setName(DEFAULT_NAME);
-        organization.setIndentifierJson(DEFAULT_INDENTIFIER_JSON);
+        organization.setIdentifierJson(DEFAULT_IDENTIFIER_JSON);
     }
 
     @Test
@@ -99,7 +99,7 @@ public class OrganizationResourceIntTest {
         assertThat(organizations).hasSize(databaseSizeBeforeCreate + 1);
         Organization testOrganization = organizations.get(organizations.size() - 1);
         assertThat(testOrganization.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testOrganization.getIndentifierJson()).isEqualTo(DEFAULT_INDENTIFIER_JSON);
+        assertThat(testOrganization.getIdentifierJson()).isEqualTo(DEFAULT_IDENTIFIER_JSON);
 
         // Validate the Organization in ElasticSearch
         Organization organizationEs = organizationSearchRepository.findOne(testOrganization.getId());
@@ -136,7 +136,7 @@ public class OrganizationResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(organization.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].indentifierJson").value(hasItem(DEFAULT_INDENTIFIER_JSON.toString())));
+                .andExpect(jsonPath("$.[*].identifierJson").value(hasItem(DEFAULT_IDENTIFIER_JSON.toString())));
     }
 
     @Test
@@ -151,7 +151,7 @@ public class OrganizationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(organization.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.indentifierJson").value(DEFAULT_INDENTIFIER_JSON.toString()));
+            .andExpect(jsonPath("$.identifierJson").value(DEFAULT_IDENTIFIER_JSON.toString()));
     }
 
     @Test
@@ -174,7 +174,7 @@ public class OrganizationResourceIntTest {
         Organization updatedOrganization = new Organization();
         updatedOrganization.setId(organization.getId());
         updatedOrganization.setName(UPDATED_NAME);
-        updatedOrganization.setIndentifierJson(UPDATED_INDENTIFIER_JSON);
+        updatedOrganization.setIdentifierJson(UPDATED_IDENTIFIER_JSON);
 
         restOrganizationMockMvc.perform(put("/api/organizations")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -186,7 +186,7 @@ public class OrganizationResourceIntTest {
         assertThat(organizations).hasSize(databaseSizeBeforeUpdate);
         Organization testOrganization = organizations.get(organizations.size() - 1);
         assertThat(testOrganization.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testOrganization.getIndentifierJson()).isEqualTo(UPDATED_INDENTIFIER_JSON);
+        assertThat(testOrganization.getIdentifierJson()).isEqualTo(UPDATED_IDENTIFIER_JSON);
 
         // Validate the Organization in ElasticSearch
         Organization organizationEs = organizationSearchRepository.findOne(testOrganization.getId());
@@ -228,6 +228,6 @@ public class OrganizationResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.[*].id").value(hasItem(organization.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].indentifierJson").value(hasItem(DEFAULT_INDENTIFIER_JSON.toString())));
+            .andExpect(jsonPath("$.[*].identifierJson").value(hasItem(DEFAULT_IDENTIFIER_JSON.toString())));
     }
 }

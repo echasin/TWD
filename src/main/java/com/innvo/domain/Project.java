@@ -29,8 +29,8 @@ public class Project implements Serializable {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    @Column(name = "identifier_json")
-    private String identifier_json;
+    @Column(name = "indentifier_json")
+    private String indentifierJson;
 
     public Long getId() {
         return id;
@@ -48,12 +48,12 @@ public class Project implements Serializable {
         this.name = name;
     }
 
-    public String getIdentifier_json() {
-        return identifier_json;
+    public String getIndentifierJson() {
+        return indentifierJson;
     }
 
-    public void setIdentifier_json(String identifier_json) {
-        this.identifier_json = identifier_json;
+    public void setIndentifierJson(String indentifierJson) {
+        this.indentifierJson = indentifierJson;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Project implements Serializable {
         return "Project{" +
             "id=" + id +
             ", name='" + name + "'" +
-            ", identifier_json='" + identifier_json + "'" +
+            ", indentifierJson='" + indentifierJson + "'" +
             '}';
     }
 }

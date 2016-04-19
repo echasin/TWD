@@ -14,14 +14,14 @@
     <property name="floatType" value="float" dbms="mysql, oracle"/>
 
     <!--
-        Added the entity Portfolio.
+        Added the entity Worklog.
     -->
-    <changeSet id="20160417014045" author="jhipster">
-        <createTable tableName="portfolio">
+    <changeSet id="20160419192047" author="jhipster">
+        <createTable tableName="worklog">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="identifier_json" type="varchar(255)">
+            <column name="hours" type="bigint">
                 <constraints nullable="true" />
             </column>
             

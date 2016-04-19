@@ -1,0 +1,18 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "hours",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "max"
+            ],
+            "fieldValidateRulesMax": "24"
+        }
+    ],
+    "changelogDate": "20160419192047",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "worklog",
+    "pagination": "no"
+}

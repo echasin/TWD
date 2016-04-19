@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory
 import scala.concurrent.duration._
 
 /**
- * Performance test for the Organization entity.
+ * Performance test for the Worklog entity.
  */
-class OrganizationGatlingTest extends Simulation {
+class WorklogGatlingTest extends Simulation {
 
     val context: LoggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
     // Log all HTTP requests
@@ -48,7 +48,7 @@ class OrganizationGatlingTest extends Simulation {
         "Authorization" -> "Bearer ${access_token}"
     )
 
-    val scn = scenario("Test the Organization entity")
+    val scn = scenario("Test the Worklog entity")
         .exec(http("First unauthenticated request")
         .get("/api/account")
         .headers(headers_http)
@@ -72,26 +72,26 @@ class OrganizationGatlingTest extends Simulation {
         .check(status.is(200)))
         .pause(10)
         .repeat(2) {
-            exec(http("Get all organizations")
-            .get("/api/organizations")
+            exec(http("Get all worklogs")
+            .get("/api/worklogs")
             .headers(headers_http_authenticated)
             .check(status.is(200)))
             .pause(10 seconds, 20 seconds)
-            .exec(http("Create new organization")
-            .post("/api/organizations")
+            .exec(http("Create new worklog")
+            .post("/api/worklogs")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "identifierJson":"SAMPLE_TEXT"}""")).asJSON
+            .body(StringBody("""{"id":null, "hours":null}""")).asJSON
             .check(status.is(201))
-            .check(headerRegex("Location", "(.*)").saveAs("new_organization_url"))).exitHereIfFailed
+            .check(headerRegex("Location", "(.*)").saveAs("new_worklog_url"))).exitHereIfFailed
             .pause(10)
             .repeat(5) {
-                exec(http("Get created organization")
-                .get("${new_organization_url}")
+                exec(http("Get created worklog")
+                .get("${new_worklog_url}")
                 .headers(headers_http_authenticated))
                 .pause(10)
             }
-            .exec(http("Delete created organization")
-            .delete("${new_organization_url}")
+            .exec(http("Delete created worklog")
+            .delete("${new_worklog_url}")
             .headers(headers_http_authenticated))
             .pause(10)
         }

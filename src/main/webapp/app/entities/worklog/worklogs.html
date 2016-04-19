@@ -1,20 +1,20 @@
 <div>
-    <h2 translate="jetsApp.organization.home.title">Organizations</h2>
+    <h2 translate="jetsApp.worklog.home.title">Worklogs</h2>
     <jhi-alert></jhi-alert>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="organization.new" >
+                <button class="btn btn-primary" ui-sref="worklog.new" >
                     <span class="glyphicon glyphicon-plus"></span>
-                    <span class="hidden-xs"  translate="jetsApp.organization.home.createLabel">
-                        Create new Organization
+                    <span class="hidden-xs"  translate="jetsApp.worklog.home.createLabel">
+                        Create new Worklog
                     </span>
                 </button>
             </div>
             <div class="col-xs-8 no-padding-right">
                 <form name="searchForm" class="form-inline">
                     <div class="input-group pull-right" >
-                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'jetsApp.organization.home.search' | translate }}">
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="{{ 'jetsApp.worklog.home.search' | translate }}">
                         <span  class="input-group-btn width-min" >
                             <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
                                 <span class="glyphicon glyphicon-search"></span>
@@ -34,34 +34,32 @@
     <div class="table-responsive">
         <table class="jh-table table table-striped">
             <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="name"><span translate="jetsApp.organization.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="identifierJson"><span translate="jetsApp.organization.identifierJson">IdentifierJson</span> <span class="glyphicon glyphicon-sort"></span></th>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="jetsApp.worklog.hours">Hours</span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="organization in vm.organizations track by organization.id">
-                    <td><a ui-sref="organization-detail({id:organization.id})">{{organization.id}}</a></td>
-                    <td>{{organization.name}}</td>
-                    <td>{{organization.identifierJson}}</td>
+                <tr ng-repeat="worklog in vm.worklogs track by worklog.id">
+                    <td><a ui-sref="worklog-detail({id:worklog.id})">{{worklog.id}}</a></td>
+                    <td>{{worklog.hours}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
-                                    ui-sref="organization-detail({id:organization.id})"
+                                    ui-sref="worklog-detail({id:worklog.id})"
                                     class="btn btn-info btn-sm">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="organization.edit({id:organization.id})"
+                                    ui-sref="worklog.edit({id:worklog.id})"
                                     class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
                             </button>
                             <button type="submit"
-                                    ui-sref="organization.delete({id:organization.id})"
+                                    ui-sref="worklog.delete({id:worklog.id})"
                                     class="btn btn-danger btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
@@ -71,9 +69,5 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div class="text-center">
-        <jhi-item-count page="vm.page" total="vm.queryCount"></jhi-item-count>
-        <uib-pagination class="pagination-sm" total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
     </div>
 </div>

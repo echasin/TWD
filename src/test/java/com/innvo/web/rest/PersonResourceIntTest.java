@@ -42,8 +42,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @IntegrationTest
 public class PersonResourceIntTest {
 
-    private static final String DEFAULT_LASTNAME = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-    private static final String UPDATED_LASTNAME = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
+    private static final String DEFAULT_NAME_LAST = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    private static final String UPDATED_NAME_LAST = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
     private static final String DEFAULT_IDENTIFIER_JSON = "AAAAA";
     private static final String UPDATED_IDENTIFIER_JSON = "BBBBB";
 
@@ -78,7 +78,7 @@ public class PersonResourceIntTest {
     public void initTest() {
         personSearchRepository.deleteAll();
         person = new Person();
-        person.setLastname(DEFAULT_LASTNAME);
+        person.setNameLast(DEFAULT_NAME_LAST);
         person.setIdentifierJson(DEFAULT_IDENTIFIER_JSON);
     }
 
@@ -98,7 +98,7 @@ public class PersonResourceIntTest {
         List<Person> people = personRepository.findAll();
         assertThat(people).hasSize(databaseSizeBeforeCreate + 1);
         Person testPerson = people.get(people.size() - 1);
-        assertThat(testPerson.getLastname()).isEqualTo(DEFAULT_LASTNAME);
+        assertThat(testPerson.getNameLast()).isEqualTo(DEFAULT_NAME_LAST);
         assertThat(testPerson.getIdentifierJson()).isEqualTo(DEFAULT_IDENTIFIER_JSON);
 
         // Validate the Person in ElasticSearch
@@ -117,7 +117,7 @@ public class PersonResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(person.getId().intValue())))
-                .andExpect(jsonPath("$.[*].lastname").value(hasItem(DEFAULT_LASTNAME.toString())))
+                .andExpect(jsonPath("$.[*].nameLast").value(hasItem(DEFAULT_NAME_LAST.toString())))
                 .andExpect(jsonPath("$.[*].identifierJson").value(hasItem(DEFAULT_IDENTIFIER_JSON.toString())));
     }
 
@@ -132,7 +132,7 @@ public class PersonResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(person.getId().intValue()))
-            .andExpect(jsonPath("$.lastname").value(DEFAULT_LASTNAME.toString()))
+            .andExpect(jsonPath("$.nameLast").value(DEFAULT_NAME_LAST.toString()))
             .andExpect(jsonPath("$.identifierJson").value(DEFAULT_IDENTIFIER_JSON.toString()));
     }
 
@@ -155,7 +155,7 @@ public class PersonResourceIntTest {
         // Update the person
         Person updatedPerson = new Person();
         updatedPerson.setId(person.getId());
-        updatedPerson.setLastname(UPDATED_LASTNAME);
+        updatedPerson.setNameLast(UPDATED_NAME_LAST);
         updatedPerson.setIdentifierJson(UPDATED_IDENTIFIER_JSON);
 
         restPersonMockMvc.perform(put("/api/people")
@@ -167,7 +167,7 @@ public class PersonResourceIntTest {
         List<Person> people = personRepository.findAll();
         assertThat(people).hasSize(databaseSizeBeforeUpdate);
         Person testPerson = people.get(people.size() - 1);
-        assertThat(testPerson.getLastname()).isEqualTo(UPDATED_LASTNAME);
+        assertThat(testPerson.getNameLast()).isEqualTo(UPDATED_NAME_LAST);
         assertThat(testPerson.getIdentifierJson()).isEqualTo(UPDATED_IDENTIFIER_JSON);
 
         // Validate the Person in ElasticSearch
@@ -209,7 +209,7 @@ public class PersonResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.[*].id").value(hasItem(person.getId().intValue())))
-            .andExpect(jsonPath("$.[*].lastname").value(hasItem(DEFAULT_LASTNAME.toString())))
+            .andExpect(jsonPath("$.[*].nameLast").value(hasItem(DEFAULT_NAME_LAST.toString())))
             .andExpect(jsonPath("$.[*].identifierJson").value(hasItem(DEFAULT_IDENTIFIER_JSON.toString())));
     }
 }
