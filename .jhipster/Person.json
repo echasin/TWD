@@ -1,0 +1,21 @@
+{
+    "fields": [
+        {
+            "fieldName": "lastname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "identifierJson",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160419003810",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "person",
+    "pagination": "pagination"
+}

@@ -1,0 +1,21 @@
+version: '2'
+services:
+    jets-app:
+        image: jets
+        external_links:
+            - jets-postgresql:postgresql
+            - jets-elasticsearch:elasticsearch
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/jets
+            - SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES=elasticsearch:9300
+        ports:
+            - 8080:8080
+    jets-postgresql:
+        extends:
+            file: postgresql.yml
+            service: jets-postgresql
+    jets-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: jets-elasticsearch

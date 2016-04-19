@@ -1,0 +1,23 @@
+
+<div>
+    <h2><span translate="jetsApp.person.detail.title">Person</span> {{vm.person.id}}</h2>
+    <hr>
+    <dl class="dl-horizontal">
+        <dt><span translate="jetsApp.person.lastname">Lastname</dt></dt>
+        <dd>
+            <span>{{vm.person.lastname}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="jetsApp.person.identifierJson">IdentifierJson</dt></dt>
+        <dd>
+            <span>{{vm.person.identifierJson}}<span>
+        </dd>
+        <hr>
+    </dl>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

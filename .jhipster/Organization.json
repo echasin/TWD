@@ -1,0 +1,23 @@
+{
+    
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "100"
+        },
+        {
+            "fieldName": "indentifierJson",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160419142657",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "organization",
+    "pagination": "pagination"
+}

@@ -1,0 +1,22 @@
+{
+     "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "50"
+        },
+        {
+            "fieldName": "identifier_json",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20160417014045",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "project",
+    "pagination": "pagination"
+}
