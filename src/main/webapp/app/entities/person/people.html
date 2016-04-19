@@ -36,7 +36,7 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="lastname"><span translate="jetsApp.person.lastname">Lastname</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nameLast"><span translate="jetsApp.person.nameLast">NameLast</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="identifierJson"><span translate="jetsApp.person.identifierJson">IdentifierJson</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
@@ -44,7 +44,7 @@
             <tbody>
                 <tr ng-repeat="person in vm.people track by person.id">
                     <td><a ui-sref="person-detail({id:person.id})">{{person.id}}</a></td>
-                    <td>{{person.lastname}}</td>
+                    <td>{{person.nameLast}}</td>
                     <td>{{person.identifierJson}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">

@@ -14,13 +14,13 @@
                     ng-model="vm.person.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="jetsApp.person.lastname" for="field_lastname">Lastname</label>
-            <input type="text" class="form-control" name="lastname" id="field_lastname"
-                    ng-model="vm.person.lastname"
+            <label class="control-label" translate="jetsApp.person.nameLast" for="field_nameLast">NameLast</label>
+            <input type="text" class="form-control" name="nameLast" id="field_nameLast"
+                    ng-model="vm.person.nameLast"
                     ng-maxlength="50" />
-            <div ng-show="editForm.lastname.$invalid">
+            <div ng-show="editForm.nameLast.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.lastname.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
+                    ng-show="editForm.nameLast.$error.maxlength" translate="entity.validation.maxlength" translate-value-max="50">
                     This field cannot be longer than 50 characters.
                 </p>
             </div>

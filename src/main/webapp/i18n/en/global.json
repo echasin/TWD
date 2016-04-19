@@ -11,6 +11,7 @@
                 "project": "Project",
                 "organization": "Organization",
                 "person": "Person",
+                "worklog": "Worklog",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -92,7 +92,7 @@
                         entity: function () {
                             return {
                                 name: null,
-                                identifier_json: null,
+                                indentifierJson: null,
                                 id: null
                             };
                         }

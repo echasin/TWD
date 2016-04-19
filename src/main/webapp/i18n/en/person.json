@@ -16,7 +16,7 @@
             "detail": {
                 "title": "Person"
             },
-            "lastname": "Lastname",
+            "nameLast": "NameLast",
             "identifierJson": "IdentifierJson"
         }
     }
