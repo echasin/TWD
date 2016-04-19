@@ -13,6 +13,13 @@
             <span>{{vm.portfolio.identifierJson}}<span>
         </dd>
         <hr>
+        <dt><span translate="jetsApp.portfolio.project">project</span></dt>
+        <dd>
+            <span ng-repeat="project in vm.portfolio.projects">
+                <a ui-sref="project-detail({id: {{project.id}}})">{{project.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <hr>
     </dl>
 
     <button type="submit"

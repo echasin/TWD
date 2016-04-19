@@ -1,19 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<databaseChangeLog
-    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160419193055_added_entity_Portfolio.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160419193352_added_entity_Person.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160419193503_added_entity_Organization.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160419193608_added_entity_Project.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160419192047_added_entity_Worklog.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20160419195253_added_entity_LaborRate.xml" relativeToChangelogFile="false"/>
-    
-    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
- 	<include file="classpath:config/liquibase/changelog/load_jets_all.xml" relativeToChangelogFile="false"/>
-   
+
+	<include
+		file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml"
+		relativeToChangelogFile="false" />
+
+	<include
+		file="classpath:config/liquibase/changelog/20160419193352_added_entity_Person.xml"
+		relativeToChangelogFile="false" />
+		
+	<include
+		file="classpath:config/liquibase/changelog/20160419193608_added_entity_Project.xml"
+		relativeToChangelogFile="false" />
+
+
+	<include
+		file="classpath:config/liquibase/changelog/20160419193055_added_entity_Portfolio.xml"
+		relativeToChangelogFile="false" />
+
+	<include
+		file="classpath:config/liquibase/changelog/20160419193503_added_entity_Organization.xml"
+		relativeToChangelogFile="false" />
+
+	<include
+		file="classpath:config/liquibase/changelog/20160419192047_added_entity_Worklog.xml"
+		relativeToChangelogFile="false" />
+	<include
+		file="classpath:config/liquibase/changelog/20160419195253_added_entity_LaborRate.xml"
+		relativeToChangelogFile="false" />
+
+	<!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase 
+		changelogs here -->
+	<include file="classpath:config/liquibase/changelog/load_jets_all.xml"
+		relativeToChangelogFile="false" />
+
 
 </databaseChangeLog>

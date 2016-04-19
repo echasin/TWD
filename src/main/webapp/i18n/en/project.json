@@ -18,7 +18,8 @@
             },
             "name": "Name",
             "identifierJson": "IdentifierJson",
-            "person": "Person"
+            "person": "Person",
+            "portfolio": "Portfolio"
         }
     }
 }

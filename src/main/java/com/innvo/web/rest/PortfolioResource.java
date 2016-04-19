@@ -121,7 +121,7 @@ public class PortfolioResource {
     @Timed
     public ResponseEntity<Portfolio> getPortfolio(@PathVariable Long id) {
         log.debug("REST request to get Portfolio : {}", id);
-        Portfolio portfolio = portfolioRepository.findOne(id);
+        Portfolio portfolio = portfolioRepository.findOneWithEagerRelationships(id);
         return Optional.ofNullable(portfolio)
             .map(result -> new ResponseEntity<>(
                 result,

@@ -1,5 +1,6 @@
 package com.innvo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -41,6 +42,11 @@ public class Project implements Serializable {
                inverseJoinColumns = @JoinColumn(name="persons_id", referencedColumnName="ID"))
     private Set<Person> persons = new HashSet<>();
 
+    @ManyToMany(mappedBy = "projects")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Portfolio> portfolios = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -71,6 +77,14 @@ public class Project implements Serializable {
 
     public void setPersons(Set<Person> persons) {
         this.persons = persons;
+    }
+
+    public Set<Portfolio> getPortfolios() {
+        return portfolios;
+    }
+
+    public void setPortfolios(Set<Portfolio> portfolios) {
+        this.portfolios = portfolios;
     }
 
     @Override

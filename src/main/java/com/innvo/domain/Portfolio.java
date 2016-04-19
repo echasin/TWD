@@ -7,6 +7,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -32,6 +34,13 @@ public class Portfolio implements Serializable {
     @Column(name = "identifier_json")
     private String identifierJson;
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "portfolio_project",
+               joinColumns = @JoinColumn(name="portfolios_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="projects_id", referencedColumnName="ID"))
+    private Set<Project> projects = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -54,6 +63,14 @@ public class Portfolio implements Serializable {
 
     public void setIdentifierJson(String identifierJson) {
         this.identifierJson = identifierJson;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 
     @Override

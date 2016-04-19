@@ -5,9 +5,9 @@
         .module('jetsApp')
         .controller('PortfolioDetailController', PortfolioDetailController);
 
-    PortfolioDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Portfolio'];
+    PortfolioDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Portfolio', 'Project'];
 
-    function PortfolioDetailController($scope, $rootScope, $stateParams, entity, Portfolio) {
+    function PortfolioDetailController($scope, $rootScope, $stateParams, entity, Portfolio, Project) {
         var vm = this;
         vm.portfolio = entity;
         vm.load = function (id) {

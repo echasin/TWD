@@ -5,12 +5,13 @@
         .module('jetsApp')
         .controller('ProjectDialogController', ProjectDialogController);
 
-    ProjectDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Project', 'Person'];
+    ProjectDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Project', 'Person', 'Portfolio'];
 
-    function ProjectDialogController ($scope, $stateParams, $uibModalInstance, entity, Project, Person) {
+    function ProjectDialogController ($scope, $stateParams, $uibModalInstance, entity, Project, Person, Portfolio) {
         var vm = this;
         vm.project = entity;
         vm.persons = Person.query();
+        vm.portfolios = Portfolio.query();
         vm.load = function(id) {
             Project.get({id : id}, function(result) {
                 vm.project = result;

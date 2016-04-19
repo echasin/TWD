@@ -6,6 +6,13 @@
             "relationshipType": "many-to-many",
             "otherEntityField": "nameLast",
             "ownerSide": true
+        },
+        {
+            "relationshipName": "portfolio",
+            "otherEntityName": "portfolio",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "project"
         }
     ],
     "fields": [

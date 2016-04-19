@@ -17,7 +17,8 @@
                 "title": "Portfolio"
             },
             "name": "Name",
-            "identifierJson": "IdentifierJson"
+            "identifierJson": "IdentifierJson",
+            "project": "Project"
         }
     }
 }
