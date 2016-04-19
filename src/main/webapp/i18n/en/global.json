@@ -12,6 +12,7 @@
                 "organization": "Organization",
                 "person": "Person",
                 "worklog": "Worklog",
+                "laborRate": "LaborRate",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
