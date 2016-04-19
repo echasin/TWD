@@ -53,6 +53,8 @@
                                  constraintName="fk_organization_person_organization_id"
                                  referencedColumnNames="id"
                                  referencedTableName="person"/>
+                                 
+ 
         
     </changeSet>
 </databaseChangeLog>

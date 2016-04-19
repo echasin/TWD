@@ -17,7 +17,8 @@
                 "title": "Project"
             },
             "name": "Name",
-            "indentifierJson": "IndentifierJson"
+            "identifierJson": "IdentifierJson",
+            "person": "Person"
         }
     }
 }

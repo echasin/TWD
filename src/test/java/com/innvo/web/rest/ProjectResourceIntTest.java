@@ -44,8 +44,8 @@ public class ProjectResourceIntTest {
 
     private static final String DEFAULT_NAME = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB";
-    private static final String DEFAULT_INDENTIFIER_JSON = "AAAAA";
-    private static final String UPDATED_INDENTIFIER_JSON = "BBBBB";
+    private static final String DEFAULT_IDENTIFIER_JSON = "AAAAA";
+    private static final String UPDATED_IDENTIFIER_JSON = "BBBBB";
 
     @Inject
     private ProjectRepository projectRepository;
@@ -79,7 +79,7 @@ public class ProjectResourceIntTest {
         projectSearchRepository.deleteAll();
         project = new Project();
         project.setName(DEFAULT_NAME);
-        project.setIndentifierJson(DEFAULT_INDENTIFIER_JSON);
+        project.setIdentifierJson(DEFAULT_IDENTIFIER_JSON);
     }
 
     @Test
@@ -99,7 +99,7 @@ public class ProjectResourceIntTest {
         assertThat(projects).hasSize(databaseSizeBeforeCreate + 1);
         Project testProject = projects.get(projects.size() - 1);
         assertThat(testProject.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testProject.getIndentifierJson()).isEqualTo(DEFAULT_INDENTIFIER_JSON);
+        assertThat(testProject.getIdentifierJson()).isEqualTo(DEFAULT_IDENTIFIER_JSON);
 
         // Validate the Project in ElasticSearch
         Project projectEs = projectSearchRepository.findOne(testProject.getId());
@@ -136,7 +136,7 @@ public class ProjectResourceIntTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(project.getId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-                .andExpect(jsonPath("$.[*].indentifierJson").value(hasItem(DEFAULT_INDENTIFIER_JSON.toString())));
+                .andExpect(jsonPath("$.[*].identifierJson").value(hasItem(DEFAULT_IDENTIFIER_JSON.toString())));
     }
 
     @Test
@@ -151,7 +151,7 @@ public class ProjectResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(project.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.indentifierJson").value(DEFAULT_INDENTIFIER_JSON.toString()));
+            .andExpect(jsonPath("$.identifierJson").value(DEFAULT_IDENTIFIER_JSON.toString()));
     }
 
     @Test
@@ -174,7 +174,7 @@ public class ProjectResourceIntTest {
         Project updatedProject = new Project();
         updatedProject.setId(project.getId());
         updatedProject.setName(UPDATED_NAME);
-        updatedProject.setIndentifierJson(UPDATED_INDENTIFIER_JSON);
+        updatedProject.setIdentifierJson(UPDATED_IDENTIFIER_JSON);
 
         restProjectMockMvc.perform(put("/api/projects")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -186,7 +186,7 @@ public class ProjectResourceIntTest {
         assertThat(projects).hasSize(databaseSizeBeforeUpdate);
         Project testProject = projects.get(projects.size() - 1);
         assertThat(testProject.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testProject.getIndentifierJson()).isEqualTo(UPDATED_INDENTIFIER_JSON);
+        assertThat(testProject.getIdentifierJson()).isEqualTo(UPDATED_IDENTIFIER_JSON);
 
         // Validate the Project in ElasticSearch
         Project projectEs = projectSearchRepository.findOne(testProject.getId());
@@ -228,6 +228,6 @@ public class ProjectResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.[*].id").value(hasItem(project.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].indentifierJson").value(hasItem(DEFAULT_INDENTIFIER_JSON.toString())));
+            .andExpect(jsonPath("$.[*].identifierJson").value(hasItem(DEFAULT_IDENTIFIER_JSON.toString())));
     }
 }

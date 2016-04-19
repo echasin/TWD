@@ -25,12 +25,34 @@
                 <constraints nullable="false" />
             </column>
             
-            <column name="indentifier_json" type="varchar(255)">
+            <column name="identifier_json" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+                <createTable tableName="project_person">
+            <column name="persons_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="projects_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="projects_id, persons_id" tableName="project_person"/>
+
+        <addForeignKeyConstraint baseColumnNames="projects_id"
+                                 baseTableName="project_person"
+                                 constraintName="fk_project_person_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="project"/>
+
+        <addForeignKeyConstraint baseColumnNames="persons_id"
+                                 baseTableName="project_person"
+                                 constraintName="fk_project_person_project_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
         
     </changeSet>
 </databaseChangeLog>

@@ -7,6 +7,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -29,8 +31,15 @@ public class Project implements Serializable {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    @Column(name = "indentifier_json")
-    private String indentifierJson;
+    @Column(name = "identifier_json")
+    private String identifierJson;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "project_person",
+               joinColumns = @JoinColumn(name="projects_id", referencedColumnName="ID"),
+               inverseJoinColumns = @JoinColumn(name="persons_id", referencedColumnName="ID"))
+    private Set<Person> persons = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -48,12 +57,20 @@ public class Project implements Serializable {
         this.name = name;
     }
 
-    public String getIndentifierJson() {
-        return indentifierJson;
+    public String getIdentifierJson() {
+        return identifierJson;
     }
 
-    public void setIndentifierJson(String indentifierJson) {
-        this.indentifierJson = indentifierJson;
+    public void setIdentifierJson(String identifierJson) {
+        this.identifierJson = identifierJson;
+    }
+
+    public Set<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(Set<Person> persons) {
+        this.persons = persons;
     }
 
     @Override
@@ -81,7 +98,7 @@ public class Project implements Serializable {
         return "Project{" +
             "id=" + id +
             ", name='" + name + "'" +
-            ", indentifierJson='" + indentifierJson + "'" +
+            ", identifierJson='" + identifierJson + "'" +
             '}';
     }
 }

@@ -1,5 +1,13 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "nameLast",
+            "ownerSide": true
+        }
+    ],
     "fields": [
         {
             "fieldName": "name",
@@ -11,7 +19,7 @@
             "fieldValidateRulesMaxlength": "50"
         },
         {
-            "fieldName": "indentifierJson",
+            "fieldName": "identifierJson",
             "fieldType": "String"
         }
     ],

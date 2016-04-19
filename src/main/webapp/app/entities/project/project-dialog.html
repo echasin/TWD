@@ -30,12 +30,16 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label" translate="jetsApp.project.indentifierJson" for="field_indentifierJson">IndentifierJson</label>
-            <input type="text" class="form-control" name="indentifierJson" id="field_indentifierJson"
-                    ng-model="vm.project.indentifierJson"
+            <label class="control-label" translate="jetsApp.project.identifierJson" for="field_identifierJson">IdentifierJson</label>
+            <input type="text" class="form-control" name="identifierJson" id="field_identifierJson"
+                    ng-model="vm.project.identifierJson"
                      />
         </div>
 
+        <div class="form-group">
+            <label translate="jetsApp.project.person" for="field_person">person</label>
+            <select class="form-control" id="field_person" multiple name="person" ng-model="vm.project.persons" ng-options="person as person.nameLast for person in vm.persons track by person.id"></select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

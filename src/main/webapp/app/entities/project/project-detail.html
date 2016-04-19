@@ -8,9 +8,16 @@
             <span>{{vm.project.name}}<span>
         </dd>
         <hr>
-        <dt><span translate="jetsApp.project.indentifierJson">IndentifierJson</dt></dt>
+        <dt><span translate="jetsApp.project.identifierJson">IdentifierJson</dt></dt>
         <dd>
-            <span>{{vm.project.indentifierJson}}<span>
+            <span>{{vm.project.identifierJson}}<span>
+        </dd>
+        <hr>
+        <dt><span translate="jetsApp.project.person">person</span></dt>
+        <dd>
+            <span ng-repeat="person in vm.project.persons">
+                <a ui-sref="person-detail({id: {{person.id}}})">{{person.nameLast}}</a>{{$last ? '' : ', '}}
+            </span>
         </dd>
         <hr>
     </dl>

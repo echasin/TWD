@@ -39,6 +39,11 @@ public class Person implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Organization> organizations = new HashSet<>();
 
+    @ManyToMany(mappedBy = "persons")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Project> projects = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -69,6 +74,14 @@ public class Person implements Serializable {
 
     public void setOrganizations(Set<Organization> organizations) {
         this.organizations = organizations;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 
     @Override

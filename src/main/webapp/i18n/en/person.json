@@ -18,7 +18,8 @@
             },
             "nameLast": "NameLast",
             "identifierJson": "IdentifierJson",
-            "organization": "Organization"
+            "organization": "Organization",
+            "project": "Project"
         }
     }
 }
