@@ -1,0 +1,27 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "ratePerHour",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required",
+                "max"
+            ],
+            "fieldValidateRulesMax": "999"
+        },
+        {
+            "fieldName": "laborCategory",
+            "fieldType": "LaborCategory",
+            "fieldValues": "Category_One,Category_Two,Category_Three",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20160419195253",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "labor_rate",
+    "pagination": "pagination"
+}

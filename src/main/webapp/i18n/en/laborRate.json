@@ -1,0 +1,23 @@
+{
+    "jetsApp": {
+        "laborRate" : {
+            "home": {
+                "title": "LaborRates",
+                "createLabel": "Create a new LaborRate",
+                "createOrEditLabel": "Create or edit a LaborRate",
+                "search": "Search for LaborRate"
+            },
+            "created": "A new LaborRate is created with identifier {{ param }}",
+            "updated": "A LaborRate is updated with identifier {{ param }}",
+            "deleted": "A LaborRate is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete LaborRate {{ id }}?"
+            },
+            "detail": {
+                "title": "LaborRate"
+            },
+            "ratePerHour": "RatePerHour",
+            "laborCategory": "LaborCategory"
+        }
+    }
+}

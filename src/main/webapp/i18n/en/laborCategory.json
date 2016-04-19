@@ -1,0 +1,10 @@
+{
+    "jetsApp": {
+        "LaborCategory" : {
+            "null": "",
+            "Category_One": "Category_One",
+            "Category_Two": "Category_Two",
+            "Category_Three": "Category_Three"
+        }
+    }
+}
