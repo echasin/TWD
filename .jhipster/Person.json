@@ -1,5 +1,13 @@
 {
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "organization",
+            "otherEntityName": "organization",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "person"
+        }
+    ],
     "fields": [
         {
             "fieldName": "nameLast",

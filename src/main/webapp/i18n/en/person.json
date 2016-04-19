@@ -17,7 +17,8 @@
                 "title": "Person"
             },
             "nameLast": "NameLast",
-            "identifierJson": "IdentifierJson"
+            "identifierJson": "IdentifierJson",
+            "organization": "Organization"
         }
     }
 }

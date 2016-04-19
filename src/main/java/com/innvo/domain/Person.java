@@ -1,5 +1,6 @@
 package com.innvo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -7,6 +8,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -31,6 +34,11 @@ public class Person implements Serializable {
     @Column(name = "identifier_json")
     private String identifierJson;
 
+    @ManyToMany(mappedBy = "persons")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Organization> organizations = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -53,6 +61,14 @@ public class Person implements Serializable {
 
     public void setIdentifierJson(String identifierJson) {
         this.identifierJson = identifierJson;
+    }
+
+    public Set<Organization> getOrganizations() {
+        return organizations;
+    }
+
+    public void setOrganizations(Set<Organization> organizations) {
+        this.organizations = organizations;
     }
 
     @Override

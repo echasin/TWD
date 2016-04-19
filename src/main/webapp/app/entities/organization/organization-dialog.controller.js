@@ -5,11 +5,12 @@
         .module('jetsApp')
         .controller('OrganizationDialogController', OrganizationDialogController);
 
-    OrganizationDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Organization'];
+    OrganizationDialogController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Organization', 'Person'];
 
-    function OrganizationDialogController ($scope, $stateParams, $uibModalInstance, entity, Organization) {
+    function OrganizationDialogController ($scope, $stateParams, $uibModalInstance, entity, Organization, Person) {
         var vm = this;
         vm.organization = entity;
+        vm.persons = Person.query();
         vm.load = function(id) {
             Organization.get({id : id}, function(result) {
                 vm.organization = result;

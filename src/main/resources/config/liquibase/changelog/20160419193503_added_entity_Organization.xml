@@ -31,6 +31,28 @@
             
             <!-- jhipster-needle-liquibase-add-column - Jhipster will add columns here, do not remove-->
         </createTable>
+                <createTable tableName="organization_person">
+            <column name="persons_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="organizations_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="organizations_id, persons_id" tableName="organization_person"/>
+
+        <addForeignKeyConstraint baseColumnNames="organizations_id"
+                                 baseTableName="organization_person"
+                                 constraintName="fk_organization_person_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+        <addForeignKeyConstraint baseColumnNames="persons_id"
+                                 baseTableName="organization_person"
+                                 constraintName="fk_organization_person_organization_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
         
     </changeSet>
 </databaseChangeLog>

@@ -5,9 +5,9 @@
         .module('jetsApp')
         .controller('OrganizationDetailController', OrganizationDetailController);
 
-    OrganizationDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Organization'];
+    OrganizationDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'entity', 'Organization', 'Person'];
 
-    function OrganizationDetailController($scope, $rootScope, $stateParams, entity, Organization) {
+    function OrganizationDetailController($scope, $rootScope, $stateParams, entity, Organization, Person) {
         var vm = this;
         vm.organization = entity;
         vm.load = function (id) {

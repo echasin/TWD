@@ -13,6 +13,13 @@
             <span>{{vm.organization.identifierJson}}<span>
         </dd>
         <hr>
+        <dt><span translate="jetsApp.organization.person">person</span></dt>
+        <dd>
+            <span ng-repeat="person in vm.organization.persons">
+                <a ui-sref="person-detail({id: {{person.id}}})">{{person.nameLast}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <hr>
     </dl>
 
     <button type="submit"

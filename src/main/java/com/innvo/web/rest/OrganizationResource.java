@@ -121,7 +121,7 @@ public class OrganizationResource {
     @Timed
     public ResponseEntity<Organization> getOrganization(@PathVariable Long id) {
         log.debug("REST request to get Organization : {}", id);
-        Organization organization = organizationRepository.findOne(id);
+        Organization organization = organizationRepository.findOneWithEagerRelationships(id);
         return Optional.ofNullable(organization)
             .map(result -> new ResponseEntity<>(
                 result,
